@@ -1,149 +1,588 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushil Singh | Cybersecurity Portfolio</title>
+    <title>Sushil Singh | Software Engineer & Cybersecurity</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         :root {
-            --bg-color: #1a1a1a;        /* Dark charcoal background */
-            --text-primary: #ffffff;
-            --text-secondary: #d1d5db;
-            --accent: #f97316;          /* Vibrant Orange */
-            --card-bg: #262626;
-            --border: #404040;
+            --emerald: #10b981;
         }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+        body { 
+            background-color: #050508; 
+            color: #e2e8f0; 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
         }
-
-        header {
-            padding: 5rem 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, #262626 0%, #1a1a1a 100%);
-            border-bottom: 3px solid var(--accent);
-        }
-
-        h1 { font-size: 3.5rem; margin: 0; color: var(--accent); letter-spacing: -1px; }
-        .subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-top: 10px; }
-
-        .container { max-width: 900px; margin: auto; padding: 2rem; }
-
-        section { margin-bottom: 4rem; }
-        h2 { 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            font-size: 1.5rem; 
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .card { 
-            background: var(--card-bg); 
-            padding: 1.5rem; 
-            border-radius: 12px; 
-            border: 1px solid var(--border);
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .card h3 { margin-top: 0; color: var(--accent); }
-
-        .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; padding: 0; }
-        .skills-list li { 
-            background: #444; 
-            color: var(--accent);
-            padding: 0.4rem 1rem; 
-            border-radius: 20px; 
-            font-size: 0.85rem; 
-            font-weight: bold;
-            border: 1px solid var(--accent);
-        }
-
-        .contact-link { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .contact-link:hover { text-decoration: underline; }
-
-        footer { text-align: center; padding: 3rem; color: var(--text-secondary); opacity: 0.7; }
         
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050508; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* Custom Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--emerald); } }
+        
+        .typewriter h1 {
+            overflow: hidden;
+            border-right: .15em solid var(--emerald);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Scroll Reveal Utility Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Glowing Text Utility */
+        .text-glow { text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
     </style>
 </head>
-<body>
+<body class="selection:bg-emerald-500/30 overflow-x-hidden relative">
 
-<header>
-    <h1>SUSHIL SINGH</h1>
-    <p class="subtitle">Cyber Security & Ethical Hacking Enthusiast</p>
-    <p>IIT Patna | B.S in  Computer Science</p>
-</header>
+    <!-- Background Glow Effects -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-900/10 blur-[150px] rounded-full"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-900/10 blur-[150px] rounded-full"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02]"></div>
+    </div>
 
-<div class="container">
-    <section id="about">
-        <h2>About Me</h2>
-        <p>B.S in Computer Science undergraduate at IIT Patna specializing in vulnerability research and ethical hacking. I have a strong foundation in security assessment, exploitation analysis, and defensive hardening.</p>
-    </section>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#home" class="flex items-center space-x-2 group">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)] transition-all duration-300">
+                        <i data-lucide="terminal" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-widest text-white">SUSHIL<span class="text-emerald-500">.</span></span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-xs font-bold text-slate-400 hover:text-emerald-400 transition-colors uppercase tracking-widest">About</a>
+                    <a href="#experience" class="text-xs font-bold text-slate-400 hover:text-emerald-400 transition-colors uppercase tracking-widest">Journey</a>
+                    <a href="#skills" class="text-xs font-bold text-slate-400 hover:text-emerald-400 transition-colors uppercase tracking-widest">Skills</a>
+                    <a href="#projects" class="text-xs font-bold text-slate-400 hover:text-emerald-400 transition-colors uppercase tracking-widest">Projects</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-black border border-emerald-500/30 rounded-lg transition-all text-xs font-bold uppercase tracking-widest">Let's Talk</a>
+                </div>
 
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        <div class="card">
-            <h3>Cybersecurity Intern — HCL GUVI</h3>
-            <p><em>July 2025 - Sept 2025</em></p>
-            <ul>
-                <li>Conducted vulnerability assessments on web applications (XSS, SQL injection).</li>
-                <li>Performed manual and automated penetration testing using Burp Suite and Nmap.</li>
-                <li>Utilized OWASP 10 and Metasploit for security evaluations.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Tools & Tech</h3>
-                <ul class="skills-list">
-                    <li>Nmap</li><li>Wireshark</li><li>Metasploit</li><li>Burp Suite</li><li>Kali Linux</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Programming</h3>
-                <ul class="skills-list">
-                    <li>Python</li><li>C</li><li>Bash</li><li>Powershell</li><li>HTML</li>
-                </ul>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-400 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
         </div>
-    </section>
-
-    <section id="projects">
-        <h2>Key Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Deep Fake Photo Detection</h3>
-                <p>Used Machine Learning to train and evaluate algorithms for detecting manipulated media at IIT Patna.</p>
-            </div>
-            <div class="card">
-                <h3>Wi-Fi Password Checker Using AI</h3>
-                <p>Analyzes password complexity and uniqueness to evaluate resistance to hacking attempts.</p>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/5 absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-1 flex flex-col">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-emerald-400">About</a>
+                <a href="#experience" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-emerald-400">Journey</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-emerald-400">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-emerald-400">Projects</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-emerald-400">Contact</a>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <p>Email: <a href="mailto:Sushilsingh.iit@gmail.com" class="contact-link">Sushilsingh.iit@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/sushilsingh-iit" class="contact-link">github.com/sushilsingh-iit</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/sushilsingh-iit" class="contact-link">linkedin.com/in/sushilsingh-iit</a></p>
-    </section>
-</div>
+    <main class="relative z-10">
+        
+        <!-- HERO SECTION -->
+        <section id="home" class="min-h-screen flex items-center pt-20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="reveal">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-6 text-xs font-mono">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>Seeking Internships & Research Opportunities</span>
+                        </div>
+                        
+                        <div class="typewriter inline-block mb-4">
+                            <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tight">
+                                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">Sushil.</span>
+                            </h1>
+                        </div>
+                        
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-300 mb-6">
+                            Software Engineer <span class="text-slate-600">|</span> Cybersecurity
+                        </h2>
+                        
+                        <p class="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed font-light">
+                            CS & Data Analytics student at <span class="text-emerald-400 font-medium">IIT Patna</span>. I build secure networks, automate complex workflows, and extract insights from data. Creator of high-performance custom firewalls.
+                        </p>
 
-<footer>
-    <p>&copy; 2026 Sushil Singh | Azamgarh, Uttar Pradesh</p>
-</footer>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#projects" class="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-lg transition-all duration-300 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:-translate-y-1">
+                                View My Work <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                            <a href="https://github.com/sushilsingh-iit" target="_blank" class="px-8 py-4 glass hover:bg-white/10 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center hover:-translate-y-1">
+                                <i data-lucide="github" class="mr-2 w-5 h-5"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
 
+                    <!-- Animated Boot Terminal Graphic -->
+                    <div class="hidden lg:flex justify-center relative reveal">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-blue-500/20 rounded-full blur-[80px] animate-pulse"></div>
+                        <div class="glass rounded-2xl w-full max-w-lg border border-white/10 shadow-2xl relative z-10 overflow-hidden animate-float">
+                            <div class="bg-black/60 px-4 py-3 border-b border-white/5 flex items-center justify-between">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="text-xs text-slate-500 font-mono">root@sushil-iitp:~</span>
+                            </div>
+                            <div class="p-6 font-mono text-sm space-y-3 text-slate-300 h-72">
+                                <p class="text-emerald-400">$ whoami</p>
+                                <p class="text-slate-300">sushil_singh</p>
+                                
+                                <p class="text-emerald-400 mt-2">$ cat education.txt</p>
+                                <p class="text-slate-300">Institute : Indian Institute of Technology Patna</p>
+                                <p class="text-slate-300">Degree    : CS & Data Analytics (Hybrid UG)</p>
+                                <p class="text-slate-300">Expected  : May 2027</p>
+
+                                <p class="text-emerald-400 mt-2">$ ./load_skills.sh</p>
+                                <p class="text-cyan-400">[OK] Python Environment Initialized</p>
+                                <p class="text-cyan-400">[OK] Scapy Network Handlers Attached</p>
+                                <p class="text-cyan-400">[OK] Cybersecurity Protocols Active</p>
+                                
+                                <p class="mt-4 flex items-center text-emerald-500 font-bold">
+                                    > System Ready <span class="w-2 h-4 bg-emerald-500 ml-2 animate-pulse"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT & STATS SECTION -->
+        <section id="about" class="py-24 border-y border-white/5 bg-[#08080c]/50">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid md:grid-cols-12 gap-16 items-center">
+                    <div class="md:col-span-5 relative reveal">
+                        <div class="aspect-square rounded-2xl overflow-hidden glass p-2 border-emerald-500/20">
+                            <!-- User should replace src with their actual image -->
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coding Background" class="w-full h-full object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#08080c] via-transparent to-transparent"></div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 glass p-6 rounded-xl border-emerald-500/30 border shadow-2xl backdrop-blur-xl">
+                            <p class="text-4xl font-black text-white">2027</p>
+                            <p class="text-xs text-emerald-400 font-bold uppercase tracking-wider mt-1">Graduation Year</p>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-7 reveal">
+                        <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2 flex items-center"><i data-lucide="user" class="w-4 h-4 mr-2"></i> About Me</h2>
+                        <h3 class="text-3xl md:text-5xl font-black text-white mb-6">Driven by Data, Secured by Code.</h3>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-6">
+                            I am currently pursuing a Hybrid UG Program in Computer Science & Data Analytics at the prestigious <span class="text-emerald-400">Indian Institute of Technology (IIT) Patna</span>. My academic journey is fueled by a passion for understanding how systems communicate, how data behaves, and how to protect both.
+                        </p>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-8">
+                            I specialize in Python development, network security, and data structures. Whether I'm designing custom firewall engines from scratch using raw sockets or analyzing complex datasets, I love tackling problems that require deep technical logic.
+                        </p>
+                        
+                        <div class="flex gap-4">
+                            <!-- Placeholder for actual resume link -->
+                            <a href="#" class="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-bold rounded-lg transition-all duration-300 flex items-center group">
+                                <i data-lucide="download" class="w-4 h-4 mr-2 text-emerald-400 group-hover:-translate-y-1 transition-transform"></i> Download Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live GitHub Stats (New Feature) -->
+                <div class="mt-24 reveal">
+                    <h2 class="text-sm font-bold text-center text-slate-500 tracking-widest uppercase mb-8">Open Source Activity</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <img src="https://github-readme-stats.vercel.app/api?username=sushilsingh-iit&theme=radical&hide_border=true&bg_color=050508&title_color=10b981&text_color=e2e8f0" alt="GitHub Stats" class="w-full rounded-xl glass p-2 border-white/5">
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sushilsingh-iit&theme=radical&hide_border=true&bg_color=050508&title_color=10b981&text_color=e2e8f0&layout=compact" alt="Top Languages" class="w-full rounded-xl glass p-2 border-white/5">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & EXPERIENCE TIMELINE -->
+        <section id="experience" class="py-24 relative">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">My Journey</h2>
+                    <h3 class="text-3xl md:text-5xl font-black text-white">Experience & Education</h3>
+                </div>
+
+                <div class="relative border-l border-emerald-500/30 ml-3 md:ml-0 md:border-l-0">
+                    <!-- Vertical Line (Desktop) -->
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent transform -translate-x-1/2"></div>
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="relative flex md:justify-between items-center w-full mb-12 group reveal">
+                        <div class="absolute left-[-29px] md:left-1/2 w-4 h-4 rounded-full bg-emerald-500 border-4 border-[#050508] transform md:-translate-x-1/2 group-hover:scale-150 transition-transform shadow-[0_0_10px_#10b981]"></div>
+                        <div class="ml-6 md:ml-0 md:w-[45%] md:text-right">
+                            <span class="text-emerald-400 text-sm font-mono font-bold">2022 - 2027 (Expected)</span>
+                            <h4 class="text-xl font-bold text-white mt-1">CS & Data Analytics</h4>
+                            <p class="text-slate-400 text-sm">Indian Institute of Technology (IIT) Patna</p>
+                        </div>
+                        <div class="hidden md:block md:w-[45%] text-left">
+                            <p class="text-slate-500 text-sm glass p-4 rounded-lg">Pursuing a rigorous hybrid curriculum focusing on core computer science fundamentals, data structures, and advanced data analytics techniques.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 (NEW: GUVI Cyber Security Certification) -->
+                    <div class="relative flex md:justify-between items-center w-full mb-12 group reveal">
+                        <div class="absolute left-[-29px] md:left-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-[#050508] transform md:-translate-x-1/2 group-hover:scale-150 transition-transform shadow-[0_0_10px_#3b82f6]"></div>
+                        <div class="hidden md:block md:w-[45%] text-right">
+                            <p class="text-slate-500 text-sm glass p-4 rounded-lg">Successfully completed comprehensive training and certification in Cyber Security. Validated practical skills in network defense, threat analysis, and security protocols.</p>
+                        </div>
+                        <div class="ml-6 md:ml-0 md:w-[45%] md:text-left">
+                            <span class="text-blue-400 text-sm font-mono font-bold">July 2025</span>
+                            <h4 class="text-xl font-bold text-white mt-1">Cyber Security Certification</h4>
+                            <p class="text-slate-400 text-sm">GUVI | HCL (Google for Education Partner)</p>
+                            <!-- Mobile description fallback -->
+                            <p class="md:hidden text-slate-500 text-sm mt-2">Successfully completed comprehensive training and certification in Cyber Security. Validated practical skills in network defense and security protocols.</p>
+                            <a href="#" class="inline-flex items-center mt-3 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                                <i data-lucide="award" class="w-4 h-4 mr-1"></i> View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 (SuperShield - Flipped alignment to match timeline zigzag) -->
+                    <div class="relative flex md:justify-between items-center w-full mb-12 group reveal">
+                        <div class="absolute left-[-29px] md:left-1/2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#050508] transform md:-translate-x-1/2 group-hover:scale-150 transition-transform shadow-[0_0_10px_#06b6d4]"></div>
+                        <div class="ml-6 md:ml-0 md:w-[45%] md:text-right">
+                            <span class="text-cyan-400 text-sm font-mono font-bold">2024 - Present</span>
+                            <h4 class="text-xl font-bold text-white mt-1">Capstone Lead Developer</h4>
+                            <p class="text-slate-400 text-sm">SuperShield Security Project</p>
+                            <!-- Mobile description fallback -->
+                            <p class="md:hidden text-slate-500 text-sm mt-2">Led the development of a real-time, low-latency personal firewall utilizing Python and raw packet sockets.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[45%] text-left">
+                            <p class="text-slate-500 text-sm glass p-4 rounded-lg">Led the development of a real-time, low-latency personal firewall utilizing Python and raw packet sockets for Capstone evaluation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="py-24 border-t border-white/5 bg-[#08080c]/50 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">Technical Arsenal</h2>
+                    <h3 class="text-3xl md:text-5xl font-black text-white">Skills & Technologies</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
+                    <!-- Core Skills -->
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="code-2" class="w-8 h-8 text-emerald-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(16,185,129,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">Python</h4>
+                        <p class="text-xs text-slate-400">Advanced scripting, OOP, automation, sockets.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-blue-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">Cybersecurity</h4>
+                        <p class="text-xs text-slate-400">Network defense, packet analysis, firewalls.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="database" class="w-8 h-8 text-cyan-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">Data Analytics</h4>
+                        <p class="text-xs text-slate-400">Data manipulation, structures, SQL, analysis.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-purple-500/50 hover:bg-purple-500/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="network" class="w-8 h-8 text-purple-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">Scapy & Sockets</h4>
+                        <p class="text-xs text-slate-400">Raw network I/O, packet crafting & parsing.</p>
+                    </div>
+                    
+                    <!-- Web/Other Skills -->
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-orange-500/50 hover:bg-orange-500/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="terminal" class="w-8 h-8 text-orange-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(249,115,22,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">C / C++</h4>
+                        <p class="text-xs text-slate-400">Core CS logic, memory management, algorithms.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-yellow-500/50 hover:bg-yellow-500/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="layout-template" class="w-8 h-8 text-yellow-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">Tkinter / GUI</h4>
+                        <p class="text-xs text-slate-400">Desktop application & dashboard development.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-teal-500/50 hover:bg-teal-500/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="globe" class="w-8 h-8 text-teal-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(20,184,166,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">Web Technologies</h4>
+                        <p class="text-xs text-slate-400">HTML, Tailwind CSS, basics of React.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-white/5 hover:border-gray-400/50 hover:bg-gray-400/5 transition-all duration-300 group text-center shadow-lg">
+                        <i data-lucide="git-branch" class="w-8 h-8 text-gray-400 mx-auto mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(156,163,175,0.8)] transition-all"></i>
+                        <h4 class="font-bold text-white mb-2">Git & GitHub</h4>
+                        <p class="text-xs text-slate-400">Version control, deployment, collaboration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECTS -->
+        <section id="projects" class="py-24 border-y border-white/5 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                    <div>
+                        <h2 class="text-sm font-bold text-emerald-400 tracking-widest uppercase mb-2">Portfolio</h2>
+                        <h3 class="text-3xl md:text-5xl font-black text-white">Featured Projects</h3>
+                    </div>
+                    <a href="https://github.com/sushilsingh-iit" target="_blank" class="mt-4 md:mt-0 flex items-center text-slate-400 hover:text-white transition-colors">
+                        View all on GitHub <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Featured Project 1: SuperShield -->
+                <div class="glass border border-emerald-500/30 rounded-3xl overflow-hidden relative group mb-12 reveal shadow-[0_0_30px_rgba(16,185,129,0.05)] hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] transition-all duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    
+                    <div class="grid lg:grid-cols-2">
+                        <div class="p-10 lg:p-12 flex flex-col justify-center">
+                            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 mb-6 text-xs font-bold w-max">
+                                <i data-lucide="star" class="w-3 h-3"></i>
+                                <span>IIT Patna Capstone Project</span>
+                            </div>
+                            
+                            <h4 class="text-3xl font-black text-white mb-4">SuperShield Firewall</h4>
+                            
+                            <p class="text-slate-400 leading-relaxed mb-6">
+                                A high-performance, real-time personal firewall built from scratch in Python. Monitors network traffic, intercepts threats, and controls the network using custom rules based on IPs, protocols, and port numbers.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-black/40 border border-white/10 rounded-md text-xs text-emerald-300 font-mono">Python</span>
+                                <span class="px-3 py-1 bg-black/40 border border-white/10 rounded-md text-xs text-emerald-300 font-mono">Scapy</span>
+                                <span class="px-3 py-1 bg-black/40 border border-white/10 rounded-md text-xs text-emerald-300 font-mono">Tkinter</span>
+                                <span class="px-3 py-1 bg-black/40 border border-white/10 rounded-md text-xs text-emerald-300 font-mono">Sockets</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-4">
+                                <a href="https://github.com/sushilsingh-iit/SuperShield" target="_blank" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-lg transition-all flex items-center shadow-lg">
+                                    <i data-lucide="github" class="w-4 h-4 mr-2"></i> Source Code
+                                </a>
+                                <!-- Replace with actual link to the presentation site you hosted -->
+                                <a href="#" target="_blank" class="px-6 py-3 glass hover:bg-white/10 text-white font-bold rounded-lg transition-all flex items-center">
+                                    <i data-lucide="external-link" class="w-4 h-4 mr-2"></i> View Presentation Site
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Terminal Mockup Graphic -->
+                        <div class="bg-black/50 p-6 lg:p-12 border-l border-white/5 relative overflow-hidden flex items-center">
+                            <div class="w-full bg-[#0a0a0f] border border-slate-800 rounded-xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-700">
+                                <div class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex items-center space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    <span class="ml-2 text-xs font-mono text-slate-500">root@supershield:~</span>
+                                </div>
+                                <div class="p-6 font-mono text-sm text-slate-300 h-64 overflow-y-auto space-y-2">
+                                    <p class="text-emerald-400">$ sudo python main.py sniff</p>
+                                    <p class="text-cyan-400">[*] SUPERSHIELD Firewall Initialized</p>
+                                    <p class="text-cyan-400">[*] Loading 124 rules from database...</p>
+                                    <p><span class="text-green-400">[ALLOW]</span> TCP 192.168.1.5 -> 140.82.121.4</p>
+                                    <p><span class="text-red-400">[BLOCK]</span> TCP 198.51.100.5 -> 192.168.1.1</p>
+                                    <p><span class="text-green-400">[ALLOW]</span> UDP 192.168.1.8 -> 8.8.8.8</p>
+                                    <p class="flex items-center"><span class="w-2 h-4 bg-emerald-400 animate-pulse mr-2"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Projects Grid (Placeholders for your future projects) -->
+                <div class="grid md:grid-cols-2 gap-6 reveal">
+                    <!-- Placeholder Project 1 -->
+                    <div class="glass p-8 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <i data-lucide="bar-chart-2" class="w-10 h-10 text-cyan-400"></i>
+                            <a href="#" class="text-slate-400 hover:text-cyan-400"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Data Analytics Dashboard</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            An upcoming project focusing on extracting insights from complex datasets. Will utilize Python Pandas, Matplotlib, and SQL to generate visual reports.
+                        </p>
+                        <div class="flex space-x-3 text-xs font-mono text-cyan-500">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder Project 2 -->
+                    <div class="glass p-8 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-colors flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <i data-lucide="lock" class="w-10 h-10 text-purple-400"></i>
+                            <a href="#" class="text-slate-400 hover:text-purple-400"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Network Vulnerability Scanner</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            A future automated tool designed to scan local networks for open ports and known vulnerabilities, generating a security health report.
+                        </p>
+                        <div class="flex space-x-3 text-xs font-mono text-purple-500">
+                            <span>Python</span>
+                            <span>Nmap</span>
+                            <span>Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-24 relative">
+            <div class="absolute inset-0 bg-emerald-900/5 blur-[100px] z-0"></div>
+            <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center relative z-10 reveal">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-400 mb-8 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                    <i data-lucide="mail" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Let's Connect</h2>
+                <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                    I'm currently open for internship opportunities, research collaborations, and exciting projects in software engineering and cybersecurity. If you have a question or just want to say hi, I'll try my best to get back to you!
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <!-- Replace with actual email -->
+                    <a href="mailto:your.email@iitp.ac.in" class="inline-flex items-center justify-center px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-lg transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                        Say Hello <i data-lucide="send" class="ml-2 w-4 h-4"></i>
+                    </a>
+                    <!-- Replace with actual LinkedIn -->
+                    <a href="#" target="_blank" class="inline-flex items-center justify-center px-8 py-4 glass hover:bg-white/10 text-white font-bold rounded-lg transition-all hover:-translate-y-1">
+                        <i data-lucide="linkedin" class="mr-2 w-5 h-5 text-blue-400"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#020204] py-12 border-t border-white/5 relative z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
+                <div class="flex items-center space-x-2 mb-2">
+                    <i data-lucide="terminal" class="w-5 h-5 text-emerald-500"></i>
+                    <span class="font-bold text-white tracking-widest uppercase">SUSHIL.</span>
+                </div>
+                <p class="text-xs text-slate-500 font-mono">Software Engineer • IIT Patna</p>
+            </div>
+            
+            <div class="flex space-x-6">
+                <!-- Replace with actual LinkedIn -->
+                <a href="#" target="_blank" class="text-slate-500 hover:text-emerald-400 transition-colors hover:-translate-y-1 transform inline-block">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="https://github.com/sushilsingh-iit" target="_blank" class="text-slate-500 hover:text-emerald-400 transition-colors hover:-translate-y-1 transform inline-block">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="mailto:your.email@iitp.ac.in" class="text-slate-500 hover:text-emerald-400 transition-colors hover:-translate-y-1 transform inline-block">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 mt-8 text-center text-xs text-slate-700 font-mono">
+            &copy; 2027 Sushil Singh. Designed & Built with HTML & Tailwind CSS.
+        </div>
+    </footer>
+
+    <!-- Under Development Floating Badge -->
+    <div id="dev-notice" class="fixed bottom-6 right-6 z-[100] glass border border-amber-500/50 p-4 rounded-xl shadow-[0_0_30px_rgba(245,158,11,0.15)] flex items-start space-x-3 max-w-xs transition-all duration-500">
+        <div class="bg-amber-500/20 p-2 rounded-lg text-amber-400 shrink-0">
+            <i data-lucide="wrench" class="w-5 h-5"></i>
+        </div>
+        <div>
+            <h4 class="text-sm font-bold text-white mb-1">Under Construction</h4>
+            <p class="text-xs text-slate-400">This portfolio is actively being developed and upgraded. Some links or sections may still be in progress!</p>
+        </div>
+        <button onclick="document.getElementById('dev-notice').style.opacity='0'; setTimeout(() => document.getElementById('dev-notice').style.display='none', 500);" class="text-slate-400 hover:text-white transition-colors shrink-0">
+            <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar styling on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-[#050508]/90', 'shadow-lg');
+                navbar.classList.remove('glass');
+            } else {
+                navbar.classList.remove('bg-[#050508]/90', 'shadow-lg');
+                navbar.classList.add('glass');
+            }
+        });
+
+        // Intersection Observer for Scroll Reveal Animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: Stop observing once revealed
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+            
+            // Trigger once on load for elements already in view
+            setTimeout(() => {
+                reveals.forEach(reveal => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - 50) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html>
